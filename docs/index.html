@@ -105,10 +105,7 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999; padding: 0px;">
-        <source src=""
-                type="video/mp4">
-      </video>
+      <img src="./images/overall-flow-architecture.jpg" alt="scheme" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999; padding: 5px;">
       <h2 class="subtitle has-text-centered">
         We enable precise attribute control in Text-to-Image Generation by combining Diffusion Models and StyleGANs
       </h2>
@@ -162,13 +159,13 @@
    }
   </style>
     <div class="columns is-centered has-text-centered">
-      <h2 class="title is-3">Proposed Method</h2>
+      <h2 class="title is-3">Proposed Framework</h2>
     </div>
     <div class="content has-text-justified" >
       <!-- <h3 class="title is-3">Key idea</h3> -->
-      <img src="./images/w2w_scheme.jpg" alt="scheme" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999; padding: 5px;">
+      <img src="./images/overall-flow-architecture.jpg" alt="scheme" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999; padding: 5px;">
       <br>
-      <p style="font-size: 18px;"><br>We create a dataset of model weights where each model is finetuned to encode a specific identity using low-rank updates (LoRA). These model weights lie on a weights manifold that we further project into a lower-dimensional subspace spanned by its principal components. We term the resulting space <em>weighst2weights</em> (<em>w2w</em>), in which operations transform one set of valid identity-encoding weights into another. We train linear classifiers to find separating hyperplanes in this space for semantic attributes. These define disentangled edit directions for an identity-encoding model in weight space.</p>
+      <p style="font-size: 18px;"><br>Given a single portrait image, we extract its <i>w</i> latent representation from encoder <i>E</i><sub>GAN</sub>. The latent <i>w</i> along with diffusion timestep <i>t</i> are passed through the latent adaptor <i>M</i> to generate a pair of time-dependent token embeddings (<i>v</i><sub><i>t</i></sub><sup>1</sup>, <i>v</i><sub><i>t</i></sub><sup>2</sup>) representing the input subject. Finally, the token embeddings are combined with arbitrary prompts to generate customized images.</p>
 
     </div>
   </div>
