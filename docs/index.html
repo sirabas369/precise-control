@@ -159,7 +159,7 @@
    }
   </style>
     <div class="columns is-centered has-text-centered">
-      <h2 class="title is-3">Proposed Framework</h2>
+      <h2 class="title is-3">Personalization</h2>
     </div>
     <div class="content has-text-justified" >
       <!-- <h3 class="title is-3">Key idea</h3> -->
@@ -172,6 +172,45 @@
   </div>
 </section>
 
+
+<!-- Personalization clickable -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <style>
+    img {
+      width:100%;
+   }
+   .clickable-area {
+            cursor: pointer;
+        }
+  </style>
+    <h3 class="title is-4">Click to send your pal on a virtual vacation.</h2>
+    <div class="content">
+      <!-- <h3 class="title is-3">Key idea</h3> -->
+      <img src="./images/personalization/personalization-tweeter-9.gif" alt="inversion" usemap="#workmapb" id="mainImageb" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999;">
+      <!-- style="transform: translate(45px,0px);" -->
+      <map name="workmapb">
+        <area id="rect1b" shape="rect" coords="30, 28, 218, 216" alt="rect1b"  class="clickable-area" onclick="changeImage2('./images/personalization/pers-00-sketch.png')">
+        <area id="rect2b" shape="rect" coords="237,28, 424, 216" alt="rect2b" class="clickable-area" onclick="changeImage2('./images/personalization/pers-00-sketch-border.png')">
+        <area id="rect3b" shape="rect" coords="440, 27, 627, 215" alt="rect3b" class="clickable-area" onclick="changeImage2('./images/personalization/pers-00-fade.png')">
+      </map>
+
+      <script>
+        function changeImage2(im_name) {
+          document.getElementById('mainImageb').src = im_name;
+
+      }
+  </script>
+
+    </div>
+  </div>
+  </div>
+</section>
+
+
+
+
+  
 <section class="section">
   <div class="container is-max-desktop">
     <style>
