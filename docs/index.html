@@ -219,10 +219,10 @@
           mainImage.src = im_name;
           
           if (im_name.includes('personalization-tweeter-9.gif')) {
-            mainImage.useMap = "#gifMap";
-          } else {
-            createSketchMap(im_name);
             mainImage.useMap = "#imgMap";
+            } 
+          else {
+            mainImage.useMap = "#gifMap";
           }
         }
         
