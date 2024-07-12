@@ -244,10 +244,13 @@
   </style>
 
     <div class="columns is-centered has-text-centered">
-      <h2 class="title is-3">Identity Editing</h2>
+      <h2 class="title is-3">Attribute Editing/Control</h2>
     </div >
+
     <div class="content has-text-justified" >
-           <p style="font-size: 18px;"> Given an identity parameterized by weights, we can manipulate attributes by traversing semantic directions in the <em>w2w</em> weight subspace. The edited weights result in a new model, where the subject has different attributes while still maintaining as much of the prior identity. These edits are <b>not</b> image-specific, and persist in appearance across different generation seeds and prompts. Additionally, as we operate on an identity weight manifold, minimal changes are made to other concepts, such as scene layout or other people. Try out the sliders below to demonstrate edits in <em>w2w</em> space. </p>
+          <img src="./images/editing-pipeline.jpg" alt="scheme" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999; padding: 5px;">
+          <br>
+          <p style="font-size: 18px;"> We map the given input image into \( w \) latent code, which is shifted by a global linear attribute edit direction to obtain edited latent code \( w^* \). The edited latent code \( w^* \) is then passed through the T2I model to obtain fine-grained attribute edits. The scalar edit strength parameter <span style="color: red;">&beta;</span> can be changed to obtain continuous attribute control. Our method performs disentangled edits for various attributes while preserving identity and generalizing to in-the-wild faces, styles, and multiple-persons. <strong>Identity Interpolation.</strong> We can perform smooth interpolation between identities by interpolating between the corresponding \( w \) codes. </p>
     </div>
 
     <h3 class="title is-4">Slide the bars to edit the identity.</h2>
@@ -325,10 +328,10 @@
         }
   </style>
     <div class="columns is-centered has-text-centered">
-      <h2 class="title is-3">Inversion</h2>
+      <h2 class="title is-3">Composing Multiple Subjects</h2>
     </div>
     <div class="content has-text-justified" >
-      <p style="font-size: 18px;"> By constraining a diffusion model's weights to lie in <em>w2w</em> space while following the standard diffusion loss, we can invert the identity from a single image into the model without overfitting. Typical inversion into a generative latent space projects the input onto the data (e.g., image) manifold. Similarly, we project onto the manifold of identity-encoding model weights. Projection into <em>w2w</em> space generalizes to unrealistic or non-human identities, distilling a realistic subject from an out-of-distribution identity. We provide examples of inversion below with a variety of input types. </p>
+      <p style="font-size: 18px;"> We run multiple parallel diffusion processes, one for each subject and one for the background and fuse them using an instance segmentation mask at each denoising step. The instance mask can be user-provided or obtained by segmenting a generated image of two subjects by the same T2I model. Note that the diffusion process for each subject is passed through its corresponding fine-tuned model, which results in excellent identity preservation. </p>
     </div>
     <h3 class="title is-4">Click on an image to invert its subject into a model.</h2>
     <div class="content">
@@ -353,43 +356,103 @@
   </div>
 </section>
 
+
+
+
+  
 <section class="section">
   <div class="container is-max-desktop">
     <style>
     img {
-      width:100%;
+      -drag: none;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-drag: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
    }
-   .clickable-area {
-            cursor: pointer;
+   label {
+            display: block;
+            text-align: center;
+            margin-bottom: 0px;
+            font-size: 25px; /* Responsive font size */
         }
+    .slider {
+            width: 35vw; /* Adjust the width of the slider here, responsive to viewport width */
+            max-width: 1000px; /* Maximum width for larger screens */
+            margin: 0px 0;
+        }
+        .container {
+        text-align: center;
+    }
   </style>
+
     <div class="columns is-centered has-text-centered">
-      <h2 class="title is-3">Sampling</h2>
-    </div>
+      <h2 class="title is-3">Multi-person Attribute Control</h2>
+    </div >
+
     <div class="content has-text-justified" >
-      <p style="font-size: 18px;">Modeling the underlying manifold of identity-encoding weights allows sampling a new model that lies on it. This results in a new model that generates a novel identity that is consistent across generations. We provide examples of sampling models from <em>w2w</em> space below, demonstrating a variety of facial attributes, hairstyles, and contexts. </p>
+          <img src="./images/editing-pipeline.jpg" alt="scheme" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999; padding: 5px;">
+          <br>
+          <p style="font-size: 18px;"> We can perform continuous edits for two attributes simultaneously by taking a linear combination of attribute edit directions. Observe the smooth and disentangled edit transformations for age and beard attributes while preserving identity. </p>
     </div>
 
-    <h3 class="title is-4">Click to sample an identity-encoding model.</h2>
-      <!-- <h3 class="title is-3">Key idea</h3> -->
-      <img src="./images/sampling/sample_animation.gif" alt="sampling" usemap="#workmap" id="mainImage" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999; padding: 0px;" >
+    <h3 class="title is-4">Slide the bars to take control.</h2>
+    <div class="content" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999; padding: 20px;">
+      <div id="imageContainer">
+        <img id="dynamicImage" src="./images/edits/0_0_0.jpg" alt="Editing">
+    </div>
 
-      <map name="workmap" id="workmap">
-        <area id="rect1" shape="rect" coords="1866,754,2225,871" alt="rect1" title="click" class="clickable-area" onclick="changeImage('./images/sampling/sampling_Part19.jpg')">
-        <area id="rect2" shape="rect" coords="2282,731,2643,847" alt="rect2" title="click" class="clickable-area" onclick="changeImage('./images/sampling/sampling_Part20.jpg')">
-        <area id="rect3" shape="rect" coords="1523,571,1884,687" alt="rect2" title="click" class="clickable-area" onclick="changeImage('./images/sampling/sampling_Part21.jpg')">
-        <area id="rect4" shape="rect" coords="1287,790,1648,905" alt="rect2" title="click" class="clickable-area" onclick="changeImage('./images/sampling/sampling_Part22.jpg')">
-        <area id="rect4" shape="rect" coords="888,687,1250,802" alt="rect2" title="click" class="clickable-area" onclick="changeImage('./images/sampling/sampling_Part23.jpg')">
-      </map>
 
-      <script>
+      <label for="sliderA">Curly Hair:</label>
+      <input type="range" id="sliderA" class="slider is-large is-info" name="sliderA" min="0" max="4" value="0" oninput="updateImage()">
 
-          function changeImage(im_name) {
-            document.getElementById('mainImage').src = im_name;
+    <!-- <input type="range" id="sliderA" name="sliderA" min="0" max="4" value="0"> -->
+    <span id="valueA">0</span>
 
+    <br>
+
+    <label for="sliderB">Pointy Nose:</label>
+    <!-- <input type="range" id="sliderB" name="sliderB" min="0" max="4" value="0"> -->
+    <input type="range" id="sliderB" class="slider is-large is-info" name="sliderB" min="0" max="4" value="0" oninput="updateImage()">
+
+    <span id="valueB">0</span>
+
+    <br>
+
+    <label for="sliderC">Narrow Eyes:</label>
+    <!-- <input type="range" id="sliderC" name="sliderC" min="0" max="4" value="0"> -->
+    <input type="range" id="sliderC" class="slider is-large is-info" name="sliderC" min="0" max="4" value="0" oninput="updateImage()">
+
+    <span id="valueC">0</span>
+
+    <script>
+        const sliderA = document.getElementById('sliderA');
+        const sliderB = document.getElementById('sliderB');
+        const sliderC = document.getElementById('sliderC');
+
+        const valueA = document.getElementById('valueA');
+        const valueB = document.getElementById('valueB');
+        const valueC = document.getElementById('valueC');
+
+        const dynamicImage = document.getElementById('dynamicImage');
+
+        function updateImage() {
+            const a = sliderA.value;
+            const b = sliderB.value;
+            const c = sliderC.value;
+
+            valueA.textContent = a;
+            valueB.textContent = b;
+            valueC.textContent = c;
+
+            dynamicImage.src = `./images/edits/${a}_${b}_${c}.jpg`;
         }
-    </script>
 
+        sliderA.addEventListener('input', updateImage);
+        sliderB.addEventListener('input', updateImage);
+        sliderC.addEventListener('input', updateImage);
+    </script>
     </div>
   </div>
   </div>
@@ -459,28 +522,21 @@
       <h2 class="title is-3">More Results</h2>
     </div>
     <br>
-    <h3 class="title is-4">Composing Edits in Weight Space</h2>
-    <img src="./images/compose_all.jpeg" alt="compose" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999; padding: 5px;">
+    <h3 class="title is-4">Face Restoration</h2>
+    <div class="content has-text-justified">
+      <img src="./images/restoration.jpg" alt="restoration">
+      <p style="font-size: 18px;"><strong>(Top) Face restoration:</strong> The disentangled \( \mathcal{W}^+ \) latent space serves as an excellent face prior in StyleGANs. Leveraging this, we perform face restoration by projecting a corrupted face image into the \( \mathcal{W}^+ \) latent space using the StyleGAN encoder to condition the T2I model. The resultant generated images look realistic and can be embedded and edited using T2I capabilities. Personalization of such corrupted images is challenging as the model could easily overfit the given single-face image. </p>
+      <p style="font-size: 18px;"><strong>(Bottom) Sketch-to-image:</strong> We use pSp encoder trained to map edge images to the \( \mathcal{W}^+ \) latent space for sketch to image generation. The obtained \( w \) latent code can then be used to condition the T2I model for real image generation. </p>
     <br>
     <br>
     <br>
-    <h3 class="title is-4">Continuous Control over Identity Edits</h2>
-      <img src="./images/continuous.jpeg" alt="continuous" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999; padding: 5px;">
-     <br>
-    <br>
-    <br>
-    <h3 class="title is-4">Identity Inversion + Editing</h2>
-      <img src="./images/inversion_web.jpg" alt="inversion_edit" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999; padding: 5px;">
+    <h3 class="title is-4">Additional Edit Directions</h2>
+    <div class="content has-text-justified">
+      <img src="./images/interface-gan-edits.jpg" alt="interface">
+      <p style="font-size: 18px;"> We perform attribute editing by using the edit directions obtained from InterfaceGAN. The edit directions generalize well in T2I models, indicating easy integration of any off-the-shelf StyleGAN editing method in our framework. </p>
     <br>
     <br>
     <br>
-    <h3 class="title is-4">Out-of-Distribution Identity Projection</h2>
-      <img src="./images/ood_project_web.jpeg" alt="ood_project" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999; padding: 5px;">
-      <br>
-      <br>
-      <br>
-      <h3 class="title is-4"><em>w2w</em> Sampling and Nearest Neighbor Identities</h2>
-        <img src="./images/sampling_web.jpeg" alt="sampling" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999; padding: 5px; width: 750px;">
 </section>
 
 
