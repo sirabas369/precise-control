@@ -256,11 +256,11 @@
     <h3 class="title is-4">Slide the bars to edit the identity.</h2>
     <div class="content" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999; padding: 20px;">
       <div id="imageContainer">
-        <img id="dynamicImage" src="./images/edits/0_0_0.jpg" alt="Editing">
+        <img id="dynamicImage" src="./images/single_edits/0_0.jpg" alt="Editing">
     </div>
 
 
-      <label for="sliderA">Curly Hair:</label>
+      <label for="sliderA">Age:</label>
       <input type="range" id="sliderA" class="slider is-large is-info" name="sliderA" min="0" max="4" value="0" oninput="updateImage()">
 
     <!-- <input type="range" id="sliderA" name="sliderA" min="0" max="4" value="0"> -->
@@ -268,46 +268,33 @@
 
     <br>
 
-    <label for="sliderB">Pointy Nose:</label>
+    <label for="sliderB">Beard:</label>
     <!-- <input type="range" id="sliderB" name="sliderB" min="0" max="4" value="0"> -->
     <input type="range" id="sliderB" class="slider is-large is-info" name="sliderB" min="0" max="4" value="0" oninput="updateImage()">
 
     <span id="valueB">0</span>
 
-    <br>
-
-    <label for="sliderC">Narrow Eyes:</label>
-    <!-- <input type="range" id="sliderC" name="sliderC" min="0" max="4" value="0"> -->
-    <input type="range" id="sliderC" class="slider is-large is-info" name="sliderC" min="0" max="4" value="0" oninput="updateImage()">
-
-    <span id="valueC">0</span>
-
     <script>
         const sliderA = document.getElementById('sliderA');
         const sliderB = document.getElementById('sliderB');
-        const sliderC = document.getElementById('sliderC');
 
         const valueA = document.getElementById('valueA');
         const valueB = document.getElementById('valueB');
-        const valueC = document.getElementById('valueC');
 
         const dynamicImage = document.getElementById('dynamicImage');
 
         function updateImage() {
             const a = sliderA.value;
             const b = sliderB.value;
-            const c = sliderC.value;
 
             valueA.textContent = a;
             valueB.textContent = b;
-            valueC.textContent = c;
 
-            dynamicImage.src = `./images/edits/${a}_${b}_${c}.jpg`;
+            dynamicImage.src = `./images/single_edits/${a}_${b}.jpg`;
         }
 
         sliderA.addEventListener('input', updateImage);
         sliderB.addEventListener('input', updateImage);
-        sliderC.addEventListener('input', updateImage);
     </script>
     </div>
   </div>
