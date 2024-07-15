@@ -256,7 +256,7 @@
     <h3 class="title is-4">Slide the bars to edit the identity.</h2>
     <div class="content" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999; padding: 20px;">
       <div id="imageContainer">
-        <img id="dynamicImage" src="./images/single_edits/0_0.jpg" alt="Editing">
+        <img id="dynamicImage" src="./images/single_edits/0-0.jpg" alt="Editing">
     </div>
 
 
@@ -290,7 +290,7 @@
             valueA.textContent = a;
             valueB.textContent = b;
 
-            dynamicImage.src = `./images/single_edits/${a}_${b}.jpg`;
+            dynamicImage.src = `./images/single_edits/${a}-${b}.jpg`;
         }
 
         sliderA.addEventListener('input', updateImage);
