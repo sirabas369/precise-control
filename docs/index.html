@@ -303,46 +303,69 @@
 
 
 
-
 <section class="section">
   <div class="container is-max-desktop">
     <style>
     img {
       width:100%;
-   }
-   .clickable-area {
-            cursor: pointer;
-        }
-  </style>
+    }
+    .clickable-area {
+      cursor: pointer;
+    }
+    .image-container {
+      position: relative;
+      display: inline-block;
+    }
+    </style>
     <div class="columns is-centered has-text-centered">
       <h2 class="title is-3">Composing Multiple Subjects</h2>
     </div>
     <div class="content has-text-justified" >
       <p style="font-size: 18px;"> We run multiple parallel diffusion processes, one for each subject and one for the background and fuse them using an instance segmentation mask at each denoising step. The instance mask can be user-provided or obtained by segmenting a generated image of two subjects by the same T2I model. Note that the diffusion process for each subject is passed through its corresponding fine-tuned model, which results in excellent identity preservation. </p>
     </div>
-    <h3 class="title is-4">Click on an image to invert its subject into a model.</h2>
+    <h3 class="title is-4">Who do you wanna combine?</h3>
     <div class="content">
-      <!-- <h3 class="title is-3">Key idea</h3> -->
-      <img src="./images/inversion/inversion_animation.gif" alt="inversion" usemap="#workmapb" id="mainImageb" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999;">
-      <!-- style="transform: translate(45px,0px);" -->
-      <map name="workmapb">
-        <area id="rect1b" shape="rect" coords="32, 51, 603, 607" alt="rect1b"  class="clickable-area" onclick="changeImage2('./images/inversion/inversion_Part21.jpg')">
-        <area id="rect2b" shape="rect" coords="32, 645, 603, 1201" alt="rect2b" class="clickable-area" onclick="changeImage2('./images/inversion/inversion_Part22.jpg')">
-        <area id="rect3b" shape="rect" coords="32, 1238, 603, 1794" alt="rect3b" class="clickable-area" onclick="changeImage2('./images/inversion/inversion_Part23.jpg')">
-      </map>
-
+      <div class="image-container">
+        <img id="mainImageb" src="./images/multi_personalization/select_first.gif" alt="multi_first" usemap="#workmapb" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999;">
+        <map name="workmapb">
+          <area id="rect1b" shape="rect" coords="24,135,212,323" alt="Option 1" onclick="selectOption(1)">
+          <area id="rect2b" shape="rect" coords="27,368,214,557" alt="Option 2" onclick="selectOption(2)">
+        </map>
+      </div>
       <script>
-        function changeImage2(im_name) {
-          document.getElementById('mainImageb').src = im_name;
+        let currentOption = 1;
 
-      }
-  </script>
+        function selectOption(option) {
+          currentOption = option;
+          if (option === 1) {
+            document.getElementById('mainImageb').src = './images/multi_personalization/select_second_0.gif';
+          } else {
+            document.getElementById('mainImageb').src = './images/multi_personalization/select_second_1.gif';
+          }
+          updateImageMap();
+        }
 
+        function updateImageMap() {
+          const imageMap = document.querySelector('map[name="workmapb"]');
+          imageMap.innerHTML = `
+            <area shape="rect" coords="232,135,419,323" alt="Sub-option 1" onclick="selectSubOption(1)">
+            <area shape="rect" coords="232,368,419,557" alt="Sub-option 2" onclick="selectSubOption(2)">
+          `;
+        }
+
+        function selectSubOption(subOption) {
+          let imageName;
+          if (currentOption === 1) {
+            imageName = subOption === 1 ? 'multi-pers-0-0.png' : 'multi-pers-0-1.png';
+          } else {
+            imageName = subOption === 1 ? 'multi-pers-1-0.png' : 'multi-pers-1-1.png';
+          }
+          document.getElementById('mainImageb').src = `./images/multi_personalization/${imageName}`;
+        }
+      </script>
     </div>
   </div>
-  </div>
 </section>
-
 
 
 
