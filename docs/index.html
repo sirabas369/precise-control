@@ -364,6 +364,93 @@
   </div>
 </section>
 
+
+
+<!-- Old way -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <style>
+    img {
+      -drag: none;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-drag: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+   }
+  </style>
+    <div class="columns is-centered has-text-centered">
+      <h2 class="title is-3">Composing Multiple Subjects</h2>
+    </div>
+    <div class="content has-text-justified" >
+      <!-- <h3 class="title is-3">Key idea</h3> -->
+      <img src="./images/multi-id-pipeline.jpg" alt="scheme" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999; padding: 5px;">
+      <br>
+      <p style="font-size: 18px;"><br>We run multiple parallel diffusion processes, one for each subject and one for the background and fuse them using an instance segmentation mask at each denoising step. The instance mask can be user-provided or obtained by segmenting a generated image of two subjects by the same T2I model. Note that the diffusion process for each subject is passed through its corresponding fine-tuned model, which results in excellent identity preservation. </p>
+
+    </div>
+  </div>
+  </div>
+</section>
+
+
+<!-- Old Multi Personalization clickable -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <style>
+    img {
+      width:100%;
+   }
+   .clickable-area {
+            cursor: pointer;
+        }
+  </style>
+    <h3 class="title is-4">Who do you wanna combine?</h2>
+    <div class="content">
+      <!-- <h3 class="title is-3">Key idea</h3> -->
+      <img src="./images/multi_personalization/select_first.gif" alt="multi-pers" usemap="#workmap_multi" id="mainImageb" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999;">
+      <!-- style="transform: translate(45px,0px);" -->
+      <map name="workmapb_multi">
+        <area id="rect1b" shape="rect" coords="24, 135, 212, 323" alt="rect1b"  class="clickable-area" onclick="changeImage2('./images/multi_personalization/select_second_0.gif')">
+        <area id="rect2b" shape="rect" coords="27, 368, 214, 557" alt="rect2b" class="clickable-area" onclick="changeImage3('./images/multi_personalization/select_second_1.gif')">
+      </map>
+
+      <map name="workmapb_multi_0">
+        <area id="rect1b" shape="rect" coords="232,135,419,323" alt="rect1b"  class="clickable-area" onclick="changeImage4('./images/multi_personalization/multi-pers-0-0.png')">
+        <area id="rect2b" shape="rect" coords="232,368,419,557" alt="rect2b" class="clickable-area" onclick="changeImage4('./images/multi_personalization/multi-pers-0-1.png')">
+      </map>
+
+      <map name="workmapb_multi_1">
+        <area id="rect1b" shape="rect" coords="232,135,419,323" alt="rect1b"  class="clickable-area" onclick="changeImage4('./images/multi_personalization/multi-pers-1-0.png')">
+        <area id="rect2b" shape="rect" coords="232,368,419,557" alt="rect2b" class="clickable-area" onclick="changeImage4('./images/multi_personalization/multi-pers-1-1.png')">
+      </map>
+
+      <script>
+        function changeImage2(im_name) {
+          document.getElementById('mainImageb').src = im_name;
+          document.getElementById('mainImageb').usemap = "workmapb_multi_0";
+      }
+
+        <script>
+        function changeImage3(im_name) {
+          document.getElementById('mainImageb').src = im_name;
+          document.getElementById('mainImageb').usemap = "workmapb_multi_1";
+      }
+  
+        <script>
+        function changeImage4(im_name) {
+          document.getElementById('mainImageb').src = im_name;
+      }
+        
+  </script>
+
+    </div>
+  </div>
+  </div>
+</section>
+  
+  
+  
   
 <section class="section">
   <div class="container is-max-desktop">
