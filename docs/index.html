@@ -339,49 +339,62 @@
   </div>
   </div>
 </section>
+
+
+<!-- Old Multi Personalization clickable -->
 <section class="section" id="multi-person-section">
-    <div class="container is-max-desktop">
-      <h3 class="title is-4">Who do you wanna combine?</h3>
-      <div class="content">
-        <img src="./images/multi_personalization/select_first.gif" alt="multi-pers" usemap="#workmapb_multi" id="multiPersonImage" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999;">
-        <map name="workmapb_multi">
-          <area shape="rect" coords="24,135,212,323" alt="rect1b" class="clickable-area" onclick="multiPersonChangeImage2('./images/multi_personalization/select_second_0.gif')">
-          <area shape="rect" coords="27,368,214,557" alt="rect2b" class="clickable-area" onclick="multiPersonChangeImage3('./images/multi_personalization/select_second_1.gif')">
-        </map>
-        <map name="workmapb_multi_0">
-          <area shape="rect" coords="232,135,419,323" alt="rect1b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-0-0.png')">
-          <area shape="rect" coords="232,368,419,557" alt="rect2b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-0-1.png')">
-        </map>
-        <map name="workmapb_multi_1">
-          <area shape="rect" coords="232,135,419,323" alt="rect1b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-1-0.png')">
-          <area shape="rect" coords="232,368,419,557" alt="rect2b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-1-1.png')">
-        </map>
-      </div>
+  <div class="container is-max-desktop">
+    <style>
+      #multi-person-section img {
+        width: 100%;
+      }
+      #multi-person-section .clickable-area {
+        cursor: pointer;
+      }
+    </style>
+    <h3 class="title is-4">Who do you wanna combine?</h3>
+    <div class="content">
+      <img src="./images/multi_personalization/select_first.gif" alt="multi-pers" usemap="#workmapb_multi" id="multiPersonImage" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999;">
+      <map name="workmapb_multi">
+        <area shape="rect" coords="24,135,212,323" alt="rect1b" class="clickable-area" onclick="multiPersonChangeImage2('./images/multi_personalization/select_second_0.gif', event)">
+        <area shape="rect" coords="27,368,214,557" alt="rect2b" class="clickable-area" onclick="multiPersonChangeImage3('./images/multi_personalization/select_second_1.gif', event)">
+      </map>
+      <map name="workmapb_multi_0">
+        <area shape="rect" coords="232,135,419,323" alt="rect1b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-0-0.png', event)">
+        <area shape="rect" coords="232,368,419,557" alt="rect2b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-0-1.png', event)">
+      </map>
+      <map name="workmapb_multi_1">
+        <area shape="rect" coords="232,135,419,323" alt="rect1b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-1-0.png', event)">
+        <area shape="rect" coords="232,368,419,557" alt="rect2b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-1-1.png', event)">
+      </map>
     </div>
-  </section>
+  </div>
+</section>
 
-  <script>
-    function multiPersonChangeImage2(imageSrc) {
-      document.getElementById('multiPersonImage').src = imageSrc;
-    }
-
-    function multiPersonChangeImage3(imageSrc) {
-      document.getElementById('multiPersonImage').src = imageSrc;
-    }
-
-    function multiPersonChangeImage4(imageSrc) {
-      document.getElementById('multiPersonImage').src = imageSrc;
-    }
-
-    // Debugging section: log clicked areas
-    document.querySelectorAll('.clickable-area').forEach(area => {
-      area.addEventListener('click', (event) => {
-        console.log('Clicked on:', event.target.alt, 'Coordinates:', event.target.coords);
-      });
-    });
-    // End of debugging section
-  </script>
-
+<script>
+  function multiPersonChangeImage2(im_name, event) {
+    var img = document.getElementById('multiPersonImage');
+    img.src = im_name;
+    img.useMap = "#workmapb_multi_0";
+    printCoordinates(event);
+  }
+  
+  function multiPersonChangeImage3(im_name, event) {
+    var img = document.getElementById('multiPersonImage');
+    img.src = im_name;
+    img.useMap = "#workmapb_multi_1";
+    printCoordinates(event);
+  }
+  
+  function multiPersonChangeImage4(im_name, event) {
+    document.getElementById('multiPersonImage').src = im_name;
+    printCoordinates(event);
+  }
+  
+  function printCoordinates(event) {
+    console.log("Clicked coordinates: (" + event.clientX + ", " + event.clientY + ")");
+  }
+</script>
   
   
   
