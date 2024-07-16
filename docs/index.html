@@ -360,28 +360,27 @@
         <area shape="rect" coords="232,135,419,323" alt="rect1b" class="clickable-area" onclick="changeImage4('./images/multi_personalization/multi-pers-1-0.png')">
         <area shape="rect" coords="232,368,419,557" alt="rect2b" class="clickable-area" onclick="changeImage4('./images/multi_personalization/multi-pers-1-1.png')">
       </map>
-      
-      <script>
-        function changeImage2(im_name) {
-          document.getElementById('mainImageb').src = im_name;
-          document.getElementById('mainImageb').useMap = "#workmapb_multi_0";
-        }
-        
-        function changeImage3(im_name) {
-          document.getElementById('mainImageb').src = im_name;
-          document.getElementById('mainImageb').useMap = "#workmapb_multi_1";
-        }
-        
-        function changeImage4(im_name) {
-          document.getElementById('mainImageb').src = im_name;
-        }
-      </script>
 
     </div>
   </div>
   </div>
 </section>
+
+<script>
+  function changeImage2(im_name) {
+    document.getElementById('mainImageb').src = im_name;
+    document.getElementById('mainImageb').useMap = "#workmapb_multi_0";
+  }
   
+  function changeImage3(im_name) {
+    document.getElementById('mainImageb').src = im_name;
+    document.getElementById('mainImageb').useMap = "#workmapb_multi_1";
+  }
+  
+  function changeImage4(im_name) {
+    document.getElementById('mainImageb').src = im_name;
+  }
+</script>
   
   
   
