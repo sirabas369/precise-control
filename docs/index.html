@@ -420,8 +420,11 @@
       .image-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 20px;
+        gap: 40px; /* Increased from 20px */
         margin-bottom: 20px;
+        max-width: 1200px; /* Added this line */
+        margin-left: auto; /* Added this line */
+        margin-right: auto; /* Added this line */
       }
       .image-container {
         text-align: center;
@@ -440,25 +443,25 @@
       <div class="image-grid">
         <div class="image-container">
           <img id="image1" src="./images/multi_edit/only_hinton_beard/1.jpg" alt="Editing 1">
-          <label for="slider1">Attribute 1:</label>
+          <label for="slider1">Beard<sub>person1</sub></label>
           <input type="range" id="slider1" class="slider is-large is-info" min="0" max="19" value="0" oninput="updateImage1()">
           <span id="value1">0</span>
         </div>
         <div class="image-container">
           <img id="image2" src="./images/multi_edit/hinton_beard_feifei_black/1.jpg" alt="Editing 2">
-          <label for="slider2">Attribute 2:</label>
+          <label for="slider2">Beard<sub>person1</sub> + Skin Tone<sub>person2</sub></label>
           <input type="range" id="slider2" class="slider is-large is-info" min="0" max="19" value="0" oninput="updateImage2()">
           <span id="value2">0</span>
         </div>
         <div class="image-container">
           <img id="image3" src="./images/multi_edit/einstein_smile_feynman_age/1.jpg" alt="Editing 3">
-          <label for="slider3">Attribute 3:</label>
+          <label for="slider3">Smile<sub>person1</sub> + Age<sub>person2</sub></label>
           <input type="range" id="slider3" class="slider is-large is-info" min="0" max="18" value="0" oninput="updateImage3()">
           <span id="value3">0</span>
         </div>
         <div class="image-container">
           <img id="image4" src="./images/multi_edit/einstein_glass_feynman_beard/1.jpg" alt="Editing 4">
-          <label for="slider4">Attribute 4:</label>
+          <label for="slider4">Eyeglasses<sub>person1</sub> + Beard<sub>person2</sub></label>
           <input type="range" id="slider4" class="slider is-large is-info" min="0" max="8" value="0" oninput="updateImage4()">
           <span id="value4">0</span>
         </div>
