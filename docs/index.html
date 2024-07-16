@@ -332,54 +332,52 @@
 
 
 <!-- Old Multi Personalization clickable -->
-<section class="section">
+<section class="section" id="multi-person-section">
   <div class="container is-max-desktop">
     <style>
-    img {
-      width:100%;
-   }
-   .clickable-area {
-            cursor: pointer;
-        }
-  </style>
-    <h3 class="title is-4">Who do you wanna combine?</h2>
+    #multi-person-section img {
+      width: 100%;
+    }
+    #multi-person-section .clickable-area {
+      cursor: pointer;
+    }
+    </style>
+    <h3 class="title is-4">Who do you wanna combine?</h3>
     <div class="content">
-      <!-- <h3 class="title is-3">Key idea</h3> -->
-      <img src="./images/multi_personalization/select_first.gif" alt="multi-pers" usemap="#workmapb_multi" id="mainImageb" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999;">
-      <!-- style="transform: translate(45px,0px);" -->
+      <img src="./images/multi_personalization/select_first.gif" alt="multi-pers" usemap="#workmapb_multi" id="multiPersonImage" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999;">
       <map name="workmapb_multi">
-        <area id="rect1b" shape="rect" coords="24, 135, 212, 323" alt="rect1b"  class="clickable-area" onclick="changeImage2('./images/multi_personalization/select_second_0.png')">
-        <area id="rect2b" shape="rect" coords="27, 368, 214, 557" alt="rect2b" class="clickable-area" onclick="changeImage3('./images/multi_personalization/select_second_1.png')">
+        <area shape="rect" coords="24,135,212,323" alt="rect1b" class="clickable-area" onclick="multiPersonChangeImage2('./images/multi_personalization/select_second_0.png')">
+        <area shape="rect" coords="27,368,214,557" alt="rect2b" class="clickable-area" onclick="multiPersonChangeImage3('./images/multi_personalization/select_second_1.png')">
       </map>
-
       <map name="workmapb_multi_0">
-        <area shape="rect" coords="232,135,419,323" alt="rect1b" class="clickable-area" onclick="changeImage4('./images/multi_personalization/multi-pers-0-0.png')">
-        <area shape="rect" coords="232,368,419,557" alt="rect2b" class="clickable-area" onclick="changeImage4('./images/multi_personalization/multi-pers-0-1.png')">
+        <area shape="rect" coords="232,135,419,323" alt="rect1b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-0-0.png')">
+        <area shape="rect" coords="232,368,419,557" alt="rect2b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-0-1.png')">
       </map>
       <map name="workmapb_multi_1">
-        <area shape="rect" coords="232,135,419,323" alt="rect1b" class="clickable-area" onclick="changeImage4('./images/multi_personalization/multi-pers-1-0.png')">
-        <area shape="rect" coords="232,368,419,557" alt="rect2b" class="clickable-area" onclick="changeImage4('./images/multi_personalization/multi-pers-1-1.png')">
+        <area shape="rect" coords="232,135,419,323" alt="rect1b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-1-0.png')">
+        <area shape="rect" coords="232,368,419,557" alt="rect2b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-1-1.png')">
       </map>
-
     </div>
-  </div>
   </div>
 </section>
 
 <script>
-  function changeImage2(im_name) {
-    document.getElementById('mainImageb').src = im_name;
-    document.getElementById('mainImageb').useMap = "#workmapb_multi_0";
+  function multiPersonChangeImage2(im_name) {
+    var img = document.getElementById('multiPersonImage');
+    img.src = im_name;
+    img.useMap = "#workmapb_multi_0";
   }
   
-  function changeImage3(im_name) {
-    document.getElementById('mainImageb').src = im_name;
-    document.getElementById('mainImageb').useMap = "#workmapb_multi_1";
+  function multiPersonChangeImage3(im_name) {
+    var img = document.getElementById('multiPersonImage');
+    img.src = im_name;
+    img.useMap = "#workmapb_multi_1";
   }
   
-  function changeImage4(im_name) {
-    document.getElementById('mainImageb').src = im_name;
+  function multiPersonChangeImage4(im_name) {
+    document.getElementById('multiPersonImage').src = im_name;
   }
+
 </script>
   
   
