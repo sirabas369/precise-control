@@ -20,7 +20,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./images/logo.png">
+  <link rel="icon" href="./images/einstein-logo.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -48,7 +48,7 @@
               <a href="https://www.linkedin.com/in/sabariswaran-mani-48b8b522a/">Sabariswaran Mani</a><sup>1,2</sup>,
             </span>
             <span class="author-block">
-              <a href="https://tejank10.github.io/">Tejan Karmali</a><sup>1,3</sup>,
+              <a href="https://tejank10.github.io/">Tejan Karmali</a><sup>3</sup>,
             </span>
             <span class="author-block">
               <a href="https://cds.iisc.ac.in/faculty/venky/">R. Venkatesh Babu</a><sup>1</sup>,
@@ -90,7 +90,17 @@
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code+Data (early July release)</span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Gallery Link. -->
+              <span class="link-block">
+                <a href="https://sirabas369.github.io/precise-control/"                        // change
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-play"></i>
+                  </span>
+                  <span>Code</span>
                   </a>
               </span>
             </div>
@@ -329,56 +339,49 @@
   </div>
   </div>
 </section>
-
-
-<!-- Old Multi Personalization clickable -->
 <section class="section" id="multi-person-section">
-  <div class="container is-max-desktop">
-    <style>
-    #multi-person-section img {
-      width: 100%;
-    }
-    #multi-person-section .clickable-area {
-      cursor: pointer;
-    }
-    </style>
-    <h3 class="title is-4">Who do you wanna combine?</h3>
-    <div class="content">
-      <img src="./images/multi_personalization/select_first.gif" alt="multi-pers" usemap="#workmapb_multi" id="multiPersonImage" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999;">
-      <map name="workmapb_multi">
-        <area shape="rect" coords="24,135,212,323" alt="rect1b" class="clickable-area" onclick="multiPersonChangeImage2('./images/multi_personalization/select_second_0.gif')">
-        <area shape="rect" coords="27,368,214,557" alt="rect2b" class="clickable-area" onclick="multiPersonChangeImage3('./images/multi_personalization/select_second_1.gif')">
-      </map>
-      <map name="workmapb_multi_0">
-        <area shape="rect" coords="232,135,419,323" alt="rect1b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-0-0.png')">
-        <area shape="rect" coords="232,368,419,557" alt="rect2b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-0-1.png')">
-      </map>
-      <map name="workmapb_multi_1">
-        <area shape="rect" coords="232,135,419,323" alt="rect1b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-1-0.png')">
-        <area shape="rect" coords="232,368,419,557" alt="rect2b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-1-1.png')">
-      </map>
+    <div class="container is-max-desktop">
+      <h3 class="title is-4">Who do you wanna combine?</h3>
+      <div class="content">
+        <img src="./images/multi_personalization/select_first.gif" alt="multi-pers" usemap="#workmapb_multi" id="multiPersonImage" style="border: 2px solid gray; border-radius: 15px; box-shadow: 0px 0px 10px #999;">
+        <map name="workmapb_multi">
+          <area shape="rect" coords="24,135,212,323" alt="rect1b" class="clickable-area" onclick="multiPersonChangeImage2('./images/multi_personalization/select_second_0.gif')">
+          <area shape="rect" coords="27,368,214,557" alt="rect2b" class="clickable-area" onclick="multiPersonChangeImage3('./images/multi_personalization/select_second_1.gif')">
+        </map>
+        <map name="workmapb_multi_0">
+          <area shape="rect" coords="232,135,419,323" alt="rect1b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-0-0.png')">
+          <area shape="rect" coords="232,368,419,557" alt="rect2b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-0-1.png')">
+        </map>
+        <map name="workmapb_multi_1">
+          <area shape="rect" coords="232,135,419,323" alt="rect1b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-1-0.png')">
+          <area shape="rect" coords="232,368,419,557" alt="rect2b" class="clickable-area" onclick="multiPersonChangeImage4('./images/multi_personalization/multi-pers-1-1.png')">
+        </map>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<script>
-  function multiPersonChangeImage2(im_name) {
-    var img = document.getElementById('multiPersonImage');
-    img.src = im_name;
-    img.useMap = "#workmapb_multi_0";
-  }
-  
-  function multiPersonChangeImage3(im_name) {
-    var img = document.getElementById('multiPersonImage');
-    img.src = im_name;
-    img.useMap = "#workmapb_multi_1";
-  }
-  
-  function multiPersonChangeImage4(im_name) {
-    document.getElementById('multiPersonImage').src = im_name;
-  }
+  <script>
+    function multiPersonChangeImage2(imageSrc) {
+      document.getElementById('multiPersonImage').src = imageSrc;
+    }
 
-</script>
+    function multiPersonChangeImage3(imageSrc) {
+      document.getElementById('multiPersonImage').src = imageSrc;
+    }
+
+    function multiPersonChangeImage4(imageSrc) {
+      document.getElementById('multiPersonImage').src = imageSrc;
+    }
+
+    // Debugging section: log clicked areas
+    document.querySelectorAll('.clickable-area').forEach(area => {
+      area.addEventListener('click', (event) => {
+        console.log('Clicked on:', event.target.alt, 'Coordinates:', event.target.coords);
+      });
+    });
+    // End of debugging section
+  </script>
+
   
   
   
